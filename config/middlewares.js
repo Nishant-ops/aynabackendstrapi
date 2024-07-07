@@ -5,9 +5,8 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      enabled: true,
-      headers: "*",
-      origin: "*",
+      origin: ["http://localhost:5173", "https://ayna-nishant.netlify.app"],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     },
   },
   "strapi::poweredBy",

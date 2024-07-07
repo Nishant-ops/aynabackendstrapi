@@ -1,17 +1,17 @@
 "use strict";
-
+const { Server } = require("socket.io");
 /**
  * message ws events
  */
 
-module.exports = function setupWebSocket() {
+module.exports = function startSocketServer(server) {
   // @ts-ignore
-  var io = require("socket.io")(strapi.server.httpServer, {
+  var io = new Server(server, {
     cors: {
       // cors setup
-      origin: ["http://localhost:5173", "https://ayna-nishant.netlify.app/"],
+      origin: ["http://localhost:5173", "https://ayna-nishant.netlify.app"],
       methods: ["GET", "POST"],
-      allowedHeaders: ["my-custom-header"],
+      allowedHeaders: ["Authorization"],
       credentials: true,
     },
   });

@@ -1,4 +1,6 @@
 "use strict";
+const startSocketServer = require("../src/api/message/ws/message");
+
 module.exports = {
   /**
    * An asynchronous register function that runs before
@@ -6,7 +8,8 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register({ strapi }) {},
+  register(/*{ strapi }*/) {},
+
   /**
    * An asynchronous bootstrap function that runs before
    * your application gets started.
@@ -14,9 +17,13 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/* { strapi } */) {
-    //strapi.server.httpServer is the new update for Strapi V4
-    const setupWebSocket = require("./api/message/ws/message");
-    setupWebSocket();
+  async bootstrap({ strapi }) {
+    // Use Strapi's existing HTTP server to start the Socket.IO server
+    const server = strapi.server.httpServer;
+
+    // Start the Socket.IO server
+    startSocketServer(server);
+
+    console.log(`Server is running on port ${process.env.PORT || 1337}`);
   },
 };
