@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_rooms",
+  "info": {
+    "singularName": "chat-room",
+    "pluralName": "chat-rooms",
+    "displayName": "Chat-room"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "roomId": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::message.message",
+      "mappedBy": "chat_room"
+    }
+  }
+}
