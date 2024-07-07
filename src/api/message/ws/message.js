@@ -9,7 +9,7 @@ module.exports = function setupWebSocket() {
   var io = require("socket.io")(strapi.server.httpServer, {
     cors: {
       // cors setup
-      origin: "http://localhost:5173",
+      origin: ["http://localhost:5173", "https://ayna-nishant.netlify.app/"],
       methods: ["GET", "POST"],
       allowedHeaders: ["my-custom-header"],
       credentials: true,
